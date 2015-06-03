@@ -5,4 +5,4 @@ ignore:
     - screenshots
     - README.md
 
-license-output: InterruptMe/LICENSE
+license-output: LICENSE
