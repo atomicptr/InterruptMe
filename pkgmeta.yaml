@@ -1,3 +1,5 @@
+package-as: InterruptMe
+
 ignore:
     - screenshots
     - README.md
