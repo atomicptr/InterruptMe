@@ -1,4 +1,5 @@
 package-as: InterruptMe
+enable-nolib-creation: no
 
 ignore:
     - screenshots
