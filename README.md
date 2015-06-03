@@ -9,7 +9,10 @@ A minimalistic interrupt counter which only appears when needed.
 
 ## Screenshots
 
-coming soon...
+The color of the number has changed, I was just too lazy to replace the screenshots.
+
+![01](screenshots/01.png)
+![02](screenshots/02.png)
 
 ## License
 
