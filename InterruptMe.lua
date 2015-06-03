@@ -31,7 +31,6 @@ function InterruptMe:OnDocLoaded()
 
         if self.window ~= nil then
             -- everything is fine :)
-            Print("Everything is fine :D")
             Apollo.RegisterEventHandler("TargetUnitChanged", "OnTargetUnitChanged", self)
 
             Apollo.CreateTimer("InterruptMe_Refresh", REFRESH_TIME, true)
@@ -59,14 +58,6 @@ function InterruptMe:OnTimerRefreshed()
         local interruptArmorMax = self.target:GetInterruptArmorMax()
 
         local isCasting = castPercentage > 0 and castPercentage < 100
-
-        local isCastingText = "Nope"
-
-        if isCasting then
-            isCastingText = "Yes :)"
-        end
-
-        Print("Is Casting: "..isCastingText..", IA: "..interruptArmor..", Max: "..interruptArmorMax)
 
         if isCasting or interruptArmor < interruptArmorMax then
             self.window:SetText(interruptArmor)
