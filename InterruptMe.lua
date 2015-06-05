@@ -1,8 +1,12 @@
 require "Window"
+require "Unit"
 
 local InterruptMe = {}
 
 local REFRESH_TIME = 0.2
+
+local SPRITE_INTERRUPT_ARMOR_NORMAL = "HUD_TargetFrame:spr_TargetFrame_InterruptArmor_Value"
+local SPRITE_INTERRUPT_ARMOR_BROKEN = "HUD_TargetFrame:spr_TargetFrame_InterruptArmor_MoO"
 
 function InterruptMe:new(o)
     o = o or {}
@@ -57,24 +61,40 @@ function InterruptMe:OnTimerRefreshed()
 
         local isCasting = self.target:IsCasting()
 
-        if isCasting or interruptArmor < interruptArmorMax then
+        local isStunned = self.target:IsInCCState(Unit.CodeEnumCCState.Stun)
+
+        if isStunned then
+            self:ShowBrokenInterruptShield()
+
+            self:ShowPlate(self.target)
+        elseif isCasting or interruptArmor < interruptArmorMax then
+            self:ShowNormalInterruptShield()
+
             self.window:SetText(interruptArmor)
 
-            self.window:SetUnit(self.target)
-
-            self:ShowPlate()
+            self:ShowPlate(self.target)
         else
             self:HidePlate()
         end
     end
 end
 
-function InterruptMe:ShowPlate()
+function InterruptMe:ShowPlate(onUnit)
+    self.window:SetUnit(onUnit)
     self.window:Show(true, true)
 end
 
 function InterruptMe:HidePlate()
     self.window:Show(false, true)
+end
+
+function InterruptMe:ShowBrokenInterruptShield()
+    self.window:SetText("")
+    self.window:SetSprite(SPRITE_INTERRUPT_ARMOR_BROKEN)
+end
+
+function InterruptMe:ShowNormalInterruptShield()
+    self.window:SetSprite(SPRITE_INTERRUPT_ARMOR_NORMAL)
 end
 
 local InterruptMeInst = InterruptMe:new()
