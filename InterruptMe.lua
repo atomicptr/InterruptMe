@@ -52,12 +52,10 @@ function InterruptMe:OnTimerRefreshed()
         -- nothing to do, hide plate
         self:HidePlate()
     else
-        local castPercentage = self.target:GetCastTotalPercent()
-
         local interruptArmor = self.target:GetInterruptArmorValue()
         local interruptArmorMax = self.target:GetInterruptArmorMax()
 
-        local isCasting = castPercentage > 0 and castPercentage < 100
+        local isCasting = self.target:IsCasting()
 
         if isCasting or interruptArmor < interruptArmorMax then
             self.window:SetText(interruptArmor)
