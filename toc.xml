@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Addon Author="kasoki" APIVersion="10" Name="InterruptMe" Description="A minimalistic interrupt counter which only appears when needed.">
+<Addon Author="kasoki" APIVersion="11" Name="InterruptMe" Description="A minimalistic interrupt counter which only appears when needed.">
     <Script Name="InterruptMe.lua"/>
     <Form Name="InterruptMe.xml"/>
 </Addon>
